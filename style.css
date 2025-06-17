@@ -1,0 +1,91 @@
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+ #map {
+    height: 100%;
+  }
+  
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+ 
+
+  #color-legend {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    z-index: 1000;
+  }
+
+  #mouse-position {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+  }
+  
+  #hover-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    pointer-events: none;
+    max-width: 250px;
+    min-width: 200px;
+  }
+  
+  #feature-info {
+    position: absolute;
+    top: 10px;
+    left: 220px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  #feature-info h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+  #mouse-position {
+    color:#100102;
+    position: absolute;
+    background: turquoise
+  }
+  
+  #feature-info p {
+    margin: 5px 0;
+    line-height: 1.4;
+  }
+  
+  #hover-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    pointer-events: none;
+    max-width: 250px;
+    min-width: 200px;
+  }
+  
+  .ol-scale-line {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    padding: 2px;
+  }
+
+  

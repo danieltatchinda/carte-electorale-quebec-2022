@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.5.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.5.0/ol.css">
+    <script src="https://unpkg.com/ol-layerswitcher@4.1.2"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ol-layerswitcher@4.1.2/dist/ol-layerswitcher.css">
+    
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+
+
+    <title>OpenLayers example</title>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <div id="mouse-position" ></div>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Légende des partis - Fonction HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        #legend-container {
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Générateur de légende des partis politiques</h1>
+    
+    <div id="legend-container"></div>
+    
+    <button onclick="generateLegend()">Générer la légende</button>
+    <button onclick="clearLegend()">Effacer la légende</button>
+
+    <script>
+        // Données des partis statistiques
+        const partisStatistiques = [
+            {
+                parti: 'C.A.Q.-E.F.L.',
+                nom: 'Coalition Avenir Québec',
+                circonscriptions: 90,
+                pourcentage: 72.0,
+                votes: 1481397,
+                couleur: [0, 120, 190]
+            },
+            {
+                parti: 'P.L.Q./Q.L.P.',
+                nom: 'Parti Libéral du Québec',
+                circonscriptions: 21,
+                pourcentage: 16.8,
+                votes: 269005,
+                couleur: [220, 20, 60]
+            },
+            {
+                parti: 'Q.S.',
+                nom: 'Québec Solidaire',
+                circonscriptions: 11,
+                pourcentage: 8.8,
+                votes: 143339,
+                couleur: [255, 140, 0]
+            },
+            {
+                parti: 'P.Q.',
+                nom: 'Parti Québécois',
+                circonscriptions: 3,
+                pourcentage: 2.4,
+                votes: 35893,
+                couleur: [34, 139, 34]
+            }
+        ];
+
+        // Fonction createColorLegend 
+        function createColorLegend() {
+            let legendHTML = `
+                <div style="background-color: rgba(255, 255, 255, 0.95); padding: 12px; border-radius: 6px; font-family: Arial, sans-serif; box-shadow: 0 3px 10px rgba(0,0,0,0.2); min-width: 180px;">
+                    <h4 style="margin: 0 0 10px 0; color: #333; text-align: center; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Légende des partis</h4>
+                    <div style="font-size: 12px;">`;
+
+            partisStatistiques.forEach(parti => {
+                legendHTML += `
+                    <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                        <span style="display: inline-block; width: 16px; height: 16px; background-color: rgb(${parti.couleur.join(',')}); border-radius: 3px; margin-right: 8px; border: 1px solid #ccc;"></span>
+                        <span style="font-weight: bold; font-size: 11px;">${parti.parti}</span>
+                        <span style="margin-left: auto; font-size: 10px; color: #666;">${parti.circonscriptions}</span>
+                    </div>`;
+            });
+
+            legendHTML += `
+                    </div>
+                    <div style="text-align: center; font-size: 10px; color: #999; margin-top: 8px; border-top: 1px solid #eee; padding-top: 5px;">
+                        Total: 125 circonscriptions
+                    </div>
+                </div>`;
+
+            return legendHTML;
+        }
+
+        // Fonction pour générer et afficher la légende
+        function generateLegend() {
+            const container = document.getElementById('legend-container');
+            const legendHTML = createColorLegend();
+            container.innerHTML = legendHTML;
+        }
+
+        // Générer automatiquement la légende au chargement de la page
+        window.addEventListener('load', function() {
+            generateLegend();
+        });
+        
+    </script>
+</body>
+</html>
